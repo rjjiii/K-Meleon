@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>AdBlock Locus</title>
+
+<style>body{font-family:sans-serif;margin:40px
+auto;max-width:650px;line-height:1.6;font-size:12pt;color:#444;padding:0
+10px}h1,h2,h3{line-height:1.2}</style>
+
+</head>
+
+
+<body>
+
+<h1>AdBlock Locus</h1>
+<p>
+	<p>K-Meleon is a privacy-focused web browser that comes with a built-in adblocker (BAB). However, it does not come with a graphical interface for that adblocker. AdBlock Locus (ABL) provides a graphical interface to toggle the BAB, create custom rules, manage subscriptions, and create exceptions. K-Meleon 76.X.G comes with the BAB already installed. If you are using K-Meleon 75.1 or the version 76 release candidate, you will need to <a href="http://kmeleonbrowser.org/forum/read.php?9,135175">download the BAB for older versions of K-Meleon</a> first.</p>
+</p>
+
+<br>
+<center>
+	<a href="https://github.com/rjjiii/Password-Extractor/releases/download/v3.0/password-extractor@rjjiii.kmeleon.org.xpi">
+		<b>Download AdBlock Locus</b>
+	</a>
+</center>
+<br>
+
+<h2>Installation</h2>
+<p>To install AdBlock Locus with the K-Meleon Extension Manager:
+<ol>
+  <li> Download the <a href="http://kmext.sourceforge.net/kem.htm">K-Meleon Extensions Manager</a> for your operating system.</li>
+  <li> Extract the extension manager packages directly into your K-Meleon folder.</li>
+  <li> Go to <b>Tools - Extension Manager</b>.</li>
+  <li> Click the <b>Run Installer</b> button. A file dialog will open. Browse to an extension saved in the <b>.7z</b> format.</li>
+  <li> K-Meleon will automatically restart after an extension is installed.  </li>
+</ol>
+
+Or to install AdBlock Locus manually:
+<ol>
+  <li> Download the compressed file.</li>
+  <li> Copy and Paste the root <b>K-Meleon</b> folder to create a backup.</li>
+  <li> Extract the extension directly into your root <b>K-Meleon</b> folder.</li>
+  <li> Restart and test K-Meleon.  </li>
+  </ol>
+</p>
+
+<h2>Links</h2>
+
+<ul>
+	<li>
+		<a href="http://kmeleonbrowser.org/forum/read.php?9,135175">K-Meleon forum thread</a> discussing the built-in adblocker.
+	</li>
+	<li>
+		<a href="">K-Meleon forum thread</a> on AdBlock Locus. Go here for questions, support, and updates.
+	</li>	
+	<li>
+		<a href="https://github.com/rjjiii/AdBlock-Locus">GitHub page</a> for the AdBlock Locus extension and subscriptions.
+	</li>	
+</ul>
+
+<!--
+<center>
+	<img src="screenshot.png">
+</center>
+-->
+
+<h2>FAQ</h2>
+<p>
+	<b>Q:Can I just use K-Meleon's Privacy Bar to toggle ad-blocking?</b><br>
+	A:Yes, after you install AdBlock Locus. To add a toggle to your privacy bar for ad-blocking, select "Edit - Configuration - Toolbars" in the menu, press "Ctrl+F" in the text editor that pops up, type "Privacy Bar" to scroll down, copy and paste the code below, and then re-start K-Meleon:
+	<pre>
+	!Ads{
+	macros(_Adblockplugin_toggle)|&Privacy
+	Block ads with K-Meleon's built-in ad blocker.
+	check.png[0,32,32]
+	}
+	</pre>
+</p>
+
+<p>
+	<b>Q: How do I allow sites with AdBlock Locus?</b><br>
+	A: You can allow all sites, by temporarily toggling the adblocker off. You can allow the current site by right-clicking the AdBlock Locus icon and choosing "Allow Domain" in the menu. You can also create custom exceptions in the URL bar and apply them by selecting "Allow Address" in the menu. Any exceptions you create will take effect the next time you start K-Meleon.
+</p>
+<p>
+	<b>Q: Will AdBlock Locus add support for features like element hiding?</b><br>
+	A: AdBlock Locus only operates the built-in adblocker. If the BAB doesn't support a feature like element hiding or the $document exception, the feature will not be available.
+</p>
+<p>
+	<b>Q: Can I use K-Meleon's built-in ad blocker without an extension?</b><br>
+	A: Yes. If you set up the BAB with AdBlock Locus and then uninstall the extension, you will still have the built-in blocking abilities. You can manually toggle the adblocker from the "Kplugins" preferences panel. You will still have the AdBlock Locus subscriptions set up and can manually refresh them by deleting "adblock.txt" in your profile and restarting K-Meleon.
+</p>
+
+
+
+</br>
+<p>
+	<center>
+		<b><a href="https://rjjiii.github.io/K-Meleon/"><sup>&uarr;</sup> Return to K-Meleon Tools main page. <sup>&uarr;</sup></a></b>
+	</center>
+</p>
+<small>
+Copyright &copy; 2022 R.J.J. III.
+</small>
+</body>
+</html>
