@@ -1,0 +1,91 @@
+﻿# -----------------------------------------------------------------------------
+#
+# AdBlock Classic 2.0.5 
+#
+# -----------------------------------------------------------------------------
+#
+# This helper macro for K-Meleon 74 creates a menu for AdBlock Classic under
+# TOOLS > AdBlock Classic. On version 76, this macro is not necessary. If your
+# computer runs Windows XP or greater, you can update your browser to 76.
+#
+# -----------------------------------------------------------------------------
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at https://mozilla.org/MPL/2.0/.
+#
+# -----------------------------------------------------------------------------
+#
+# UTF-8  K-Meleon Macros (http://kmeleon.sourceforge.net/wiki/index.php?id=MacroLanguage2)
+#
+# Version 		: 2.0.5 2022-06-11  (macro originally by hermes, ABPrime by 
+#			      Binary Outcast, packaged by RJJIII)
+# KM forum 		: http://kmeleonbrowser.org/forum/read.php?19,155958,156080
+# KM forum 		: http://kmeleonbrowser.org/forum/read.php?19,146713,151479
+# Dependencies	: "AdBlock Classic" xul-based add-on
+# Files         : ad-block-classic@rjjiii.kmeleonbrowser.org
+#
+# -----------------------------------------------------------------------------
+
+
+
+$ABPrime_name="AdBlock Classic";
+
+$ABPrime_command="macros(_ABP_ON_OFF_)";
+$ABPrime_Enabled="extensions.abprime.enabled";
+$ABPrime_Count="extensions.abprime.savestats";
+if(getpref(BOOL,"extensions.abprime.frameobjects"))setpref(BOOL,"extensions.abprime.frameobjects",false);
+
+
+
+# -----------------------------------------------------------------------------
+# Macro modules
+# -----------------------------------------------------------------------------
+_ABP_ON_OFF_{
+	macroinfo=_("Toggle ad-blocking on or off.");
+	menuchecked=getpref(BOOL,$ABPrime_Enabled);
+	togglepref(BOOL,"extensions.abprime.enabled");
+	statusbar(sub("%s",getpref(BOOL,$ABPrime_Enabled)?$on:$off,_("AdBlock Classic is %s")));
+}
+
+ABPrime_Filters{
+	macroinfo=_("Customize filter settings.");
+	$OpenURL="chrome://abprime/content/filters.xul";
+	&OpenURL_InNewWindow;
+}
+
+ABPrime_Count{
+	macroinfo=_("Toggle data logging. Checked: ON");
+	menuchecked=getpref(BOOL,$ABPrime_Count);
+	togglepref(BOOL,$ABPrime_Count);
+}
+
+ABPrime_About{
+	macroinfo= _("AdBlock Classic is open-source software. You may use, modify, and redistribute it under the Mozilla Public License 2.0. Source code is available at the download location. Files in the XPI retain comments. If you did not receive a copy of the license it is available online at: https://www.mozilla.org/en-US/MPL/2.0/ \n\nAdBlock Classic includes code from AdBlock Plus, AdBlock Lattitude, and ABPrime. AdBlock Classic can use AdBlock Plus rules and subscriptions to block ads in K-Meleon. \n\nAdblock Plus is a registered trademark of eyeo GmbH. ABPrime is distributed by BinaryOutcast for various UXP-based applications. This third party package is not officially endorsed by K-Meleon. This software has been distributed freely and WITHOUT WARRANTY OF ANY KIND. \n\n\n\nVersion 2.0.5 \n\nCopyright © 2022 R.J.J. III"),_($ABPrime_name));
+}
+
+
+
+# -----------------------------------------------------------------------------
+# Menu
+# -----------------------------------------------------------------------------
+_ABPrime_BuildMenu{$_menu=$ABPrime_name;
+	setmenu($_menu,macro,"On/Off","_ABP_ON_OFF_",0);
+	setmenu($_menu,macro,"Settings","ABPrime_Filters",1);
+	setmenu($_menu,macro,"Save log","ABPrime_Count",2);
+	setmenu($_menu,macro,"About","ABPrime_About",3);
+
+	# Add above menu to "Tools"
+	setmenu("&Tools",popup,"AdBlock Classic","_ABPrime_BuildMenu",-1);
+}
+
+_ABP_KEY_{
+	setaccel("CTRL B","macros(_ABP_ON_OFF_)");
+}
+
+
+
+# -----------------------------------------------------------------------------------
+# Startup
+# -----------------------------------------------------------------------------------
+$OnInit=$OnInit."_ABPrime_BuildButton;"."_ABPrime_BuildMenu;"."_ABP_KEY_;";
