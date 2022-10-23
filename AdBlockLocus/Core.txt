@@ -11823,3 +11823,5 @@ $websocket,domain=pornhub.com|redtube.com|redtube.com.br|tube8.com|tube8.es|tube
 
 ! Newegg.com
 ||https://cdn.quadpay.com/v1/$script
+
+||cadenaser.com^$script
